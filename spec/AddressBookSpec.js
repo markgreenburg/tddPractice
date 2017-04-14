@@ -2,7 +2,7 @@ const AddressBook = require('../src/AddressBook');
 const Contact = require('../src/Contact');
 
 describe('Address Book', () => {
-    const testBook = AddressBook();
+    let testBook = AddressBook();
     const testContact = Contact("Bob", "Dole");
     
     it("Should be able to add a contact", () => {
