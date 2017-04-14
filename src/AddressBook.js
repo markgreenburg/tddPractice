@@ -3,9 +3,12 @@
 const AddressBook = () => {
     let state = {
         contacts: [],
+        initialComplete: false,
     };
     return Object.assign(
         {},
+        getInitialContacts(state),
+        getInitialComplete(state),
         getContact(state),
         addContact(state),
         deleteContact(state)
@@ -13,6 +16,22 @@ const AddressBook = () => {
 }
 
 /* Define address book functionality via standard functions */
+
+/* Get list of initial contacts - Mock */
+const getInitialContacts = (state) => ({
+    getInitialContacts: (cb) => {
+        // Setting timeout to mock an async call
+        setTimeout(() => {
+            state.initialComplete = true;
+            if (cb) { return cb() }
+        }, 3);
+    }
+});
+
+/* Get status of initial contacts fetch */
+const getInitialComplete = (state) => ({
+    getInitialComplete: () => state.initialComplete
+});
 
 /* Get contact from address book */
 const getContact = (state) => ({

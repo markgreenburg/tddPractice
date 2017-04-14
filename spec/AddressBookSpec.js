@@ -21,3 +21,14 @@ describe('Address Book', () => {
         expect(testBook.getContact(0)).not.toBeDefined();
     });
 });
+
+describe('Async Address Book', () => {
+    let testBook = AddressBook();
+    
+    beforeEach((done) => testBook.getInitialContacts(() => done()));
+
+    it("Should grab initial contacts", (done) => {
+        expect(testBook.getInitialComplete()).toBe(true);
+        done();
+    });
+});
